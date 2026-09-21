@@ -1,73 +1,80 @@
-# Symfony4
-PHP STORM
+# 🎼 Aplicação Symfony 4 — Arquitetura Backend & ORM
 
-Comandos Utilizados pelo Composer(terminal da IDE)
-	dentro da pasta do projeto
-		composer create-project symfony/skeleton nome-do-projeto
+Repositório voltado para a demonstração e estudo prático do **Symfony 4**, explorando a construção de rotas, injeção de dependências, mapeamento objeto-relacional (ORM) e gestão de migrações com Doctrine.
 
-Configuração da IDE para projeto em Symfone 4
+---
 
-Settings>Plugins> Search "Symfony"
-	install Drupal Symfony Bridge
-			PHP Annotations
-			SensioLabsInsight
-			Shopware
-			Symfony Plugin		
-		
-Após a Instalação entrar novamente em Settings, digitar "Symfony" no 
-campo de busca
+## 🚀 Tecnologias Utilizadas
 
-Selecionar Symfony
-	Habilitar "Enable Plugin for this project"
-	
-Web Directory
-		Colocar a pasta "public" do projeto
+* **Linguagem:** PHP (7.x+)
+* **Framework:** [Symfony 4](https://symfony.com/)
+* **ORM:** [Doctrine ORM](https://www.doctrine-project.org/)
+* **Database Migrations:** Doctrine Migrations Bundle
+* **Template Engine:** Twig
+* **Gestor de Dependências:** Composer
 
+---
 
-Em seguida digite "Composer" na Barra de Busca do Settings
-	Habilitar campos
-		Add packages as libraries
-		Synchronize IDE Settings with composer.json
-		
-No Campo -> Path Composer.json
-			colocar o arquivo composer.json que está na raiz do projeto
-			
-Para instalar servidor próprio do Symfony
-	digitar no terminal -> composer req server
-	
-	para subir o servidor digite o comando no terminal
-		php bin/console server:run
-		
-Para auxiliar na criação de rotas para o framework
-instalar o pacote annotations com o comando no terminal
+## 🛠️ Conceitos e Funcionalidades Implementadas
 
-	composer req annotations
-	
-Para auxiliar na criação de Views instalar o pacote TWIG
-com o comando no terminal
-	
-	composer req twig
-	
-para a criação de um banco de dados instalar o pacote DOCTRINE
-para instalação utilize o comando em terminal
+* **Estrutura MVC:** Organização modular separando controladores, entidades de domínio e renderização visual com Twig.
+* **Rotas e Mapeamento:** Configuração de rotas baseada em ficheiros de configuração YAML.
+* **Injeção de Dependências:** Declaração e resolução automática de serviços através do `services.yaml`.
+* **Persistência de Dados:** Mapeamento de entidades com Doctrine e aplicação de migrações estruturadas para versionamento do banco de dados.
 
-	composer req doctrine
-	
-	após isso configurar o banco no arquivo .env
-	
-	na linha DATABASE_URL=mysql://{NOME DO BANDO}:{SENHA SE HOUVER}@127.0.0.1:3306/{NOME DO BANCO}
-	
-	Para criar um banco utilize o camando em terminal	
-		php bin/console doctrine:database:create
-		
-	
-	Para criar Entidades será necessário o pacote MAKER que pode ser instalado 
-	com o camando pelo terminal 
-		composer req maker
-		
-	após instalação , para se criar uma entidade use o camando via terminal
-		php bin/console make:entity {nome da tabela}
-		
-	para criar campos na tabela
-		php bin/console doctrine:migrations:migrate
-		
+---
+
+## 📂 Estrutura do Projeto
+
+```text
+projetoSymfony4/
+├── bin/                 # Executáveis do Symfony (console)
+├── config/              # Ficheiros de configuração (routes, packages, services)
+├── public/              # Ponto de entrada público da aplicação (index.php)
+├── src/
+│   ├── Controller/      # Controladores da aplicação (ex: ExemploController.php)
+│   ├── Entity/          # Entidades do Doctrine (ex: TABSymfony.php)
+│   ├── Migrations/      # Ficheiros de migração da base de dados
+│   └── Repository/      # Repositórios do Doctrine para consultas personalizadas
+└── templates/           # Views em Twig (base.html.twig)
+```
+
+🔧 Como Executar o Projeto
+Pré-requisitos
+PHP 7.3+ (com extensões pdo, pdo_mysql, mbstring ativas)
+
+Composer
+Servidor MySQL/MariaDB (ou SQLite para testes)
+
+Passos para Instalação
+1. Clonar o repositório e entrar no diretório:
+
+```bash
+git clone [https://github.com/felipeisraelsantos/Symfony4.git](https://github.com/felipeisraelsantos/Symfony4.git)
+cd Symfony4/projetoSymfony4
+```
+
+2. Instalar as dependências via Composer:
+
+```Bash
+composer install
+```
+3. Configurar as Variáveis de Ambiente:
+Duplique ou edite o ficheiro .env na raiz do projeto e ajuste as credenciais do banco de dados na variável DATABASE_URL:
+
+Snippet de código
+```
+DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
+```
+4. Executar as Migrações do Banco de Dados:
+```Bash
+php bin/console doctrine:migrations:migrate
+```
+5.Iniciar o Servidor de Desenvolvimento:
+```Bash
+php -S localhost:8000 -t public/
+```
+A aplicação estará acessível em http://localhost:8000.
+
+📄 Licença
+Este projeto é de uso livre para fins de estudo e demonstração de conhecimentos no ecossistema Symfony.
